@@ -9,18 +9,32 @@ skeletons = data.copy()
 duration = skeletons.pop('recID')
 skeletons.pop('timestamp')
 
-timestep = 0
+#remove frames with weird coordinates
+threshold = 100
+cursor = 0
+for id,skeleton in enumerate(skeletons):
+    for temp_cursor in range(duration):
+        if(abs(skeletons[skeleton]['handPose']['Wrist'][temp_cursor]['x']) > threshold):
+            continue
+        elif(abs(skeletons[skeleton]['handPose']['Wrist'][temp_cursor]['y']) > threshold):
+            continue
+        elif(abs(skeletons[skeleton]['handPose']['Wrist'][temp_cursor]['z']) > threshold):
+            continue
+        else:
+            if (temp_cursor > cursor):
+                cursor = temp_cursor
+            break
 
 
 with open('deneme.skeleton', 'w') as f:
     
-    f.write(str(duration))
+    f.write(str(duration - cursor))
     f.write('\n')
-    for timestep in range(duration):
+    for timestep in range(cursor,duration):
         f.write(str(len(skeletons)))
         f.write('\n')
         for id,skeleton in enumerate(skeletons):
-            if (timestep == 0):
+            if (timestep == cursor):
                 skeletons[skeleton]['handPose'].pop('None')
             f.write(str(id+1))
             f.write('\n')
