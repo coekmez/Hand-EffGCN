@@ -1,0 +1,42 @@
+[ 2021-12-23 19:49:24,749 ] Saving folder path: ./workdir/2999_EfficientGCN-B0_hand-training/2021-12-23 19-49-24
+[ 2021-12-23 19:49:24,749 ] 
+[ 2021-12-23 19:49:24,765 ] Starting preparing ...
+[ 2021-12-23 19:49:24,771 ] Saving model name: 2999_EfficientGCN-B0_hand-training
+[ 2021-12-23 19:49:24,810 ] GPU-0 used: 587.49609375MB
+[ 2021-12-23 19:49:24,816 ] Dataset: hand-training
+[ 2021-12-23 19:49:24,816 ] Batch size: train-8, eval-8
+[ 2021-12-23 19:49:24,816 ] Data shape (branch, channel, frame, joint, person): [3, 6, 288, 26, 2]
+[ 2021-12-23 19:49:24,820 ] Number of action classes: 2
+[ 2021-12-23 19:49:24,836 ] Model: EfficientGCN-B0 {'stem_channel': 64, 'block_args': [[48, 1, 0.5], [24, 1, 0.5], [64, 2, 1], [128, 2, 1]], 'fusion_stage': 2, 'act_type': 'swish', 'att_type': 'stja', 'layer_type': 'Sep', 'drop_prob': 0.25, 'kernel_size': [5, 2], 'scale_args': [1.2, 1.35], 'expand_ratio': 2, 'reduct_ratio': 4, 'bias': True, 'edge': True}
+[ 2021-12-23 19:49:25,117 ] Model profile: 3.20G FLOPs and 0.32M Parameters
+[ 2021-12-23 19:49:25,223 ] Warning: Do NOT exist this pretrained model: ./pretrained_models/2999_EfficientGCN-B0_hand-training.pth.tar!
+[ 2021-12-23 19:49:25,224 ] Create model randomly.
+[ 2021-12-23 19:49:25,226 ] Optimizer: SGD {'lr': 0.1, 'momentum': 0.9, 'nesterov': True, 'weight_decay': 0.0001}
+[ 2021-12-23 19:49:30,917 ] LR_Scheduler: cosine {'max_epoch': 70, 'warm_up': 10}
+[ 2021-12-23 19:49:30,917 ] Loss function: CrossEntropyLoss
+[ 2021-12-23 19:49:30,917 ] Successful!
+[ 2021-12-23 19:49:30,919 ] 
+[ 2021-12-23 19:49:30,919 ] Starting training ...
+[ 2021-12-23 19:49:48,866 ] Epoch: 1/70, Training accuracy: 49/96(51.04%), Training time: 17.95s
+[ 2021-12-23 19:49:48,867 ] 
+[ 2021-12-23 19:49:48,867 ] Saving model for epoch 1/70 ...
+[ 2021-12-23 19:49:48,925 ] Best top-1 accuracy: 0.00%, Total time: 00d-00h-00m-18s
+[ 2021-12-23 19:49:48,926 ] 
+[ 2021-12-23 19:50:03,072 ] Epoch: 2/70, Training accuracy: 93/96(96.88%), Training time: 14.15s
+[ 2021-12-23 19:50:03,073 ] 
+[ 2021-12-23 19:50:03,074 ] Saving model for epoch 2/70 ...
+[ 2021-12-23 19:50:03,130 ] Best top-1 accuracy: 0.00%, Total time: 00d-00h-00m-32s
+[ 2021-12-23 19:50:03,130 ] 
+[ 2021-12-23 19:50:17,400 ] Epoch: 3/70, Training accuracy: 94/96(97.92%), Training time: 14.27s
+[ 2021-12-23 19:50:17,400 ] 
+[ 2021-12-23 19:50:17,401 ] Saving model for epoch 3/70 ...
+[ 2021-12-23 19:50:17,458 ] Best top-1 accuracy: 0.00%, Total time: 00d-00h-00m-46s
+[ 2021-12-23 19:50:17,458 ] 
+[ 2021-12-23 19:50:31,786 ] Epoch: 4/70, Training accuracy: 86/96(89.58%), Training time: 14.33s
+[ 2021-12-23 19:50:31,787 ] 
+[ 2021-12-23 19:50:31,788 ] Saving model for epoch 4/70 ...
+[ 2021-12-23 19:50:31,855 ] Best top-1 accuracy: 0.00%, Total time: 00d-00h-01m-00s
+[ 2021-12-23 19:50:31,855 ] 
+[ 2021-12-23 19:50:46,177 ] Epoch: 5/70, Training accuracy: 92/96(95.83%), Training time: 14.32s
+[ 2021-12-23 19:50:46,190 ] 
+[ 2021-12-23 19:50:46,190 ] Evaluating for epoch 5/70 ...

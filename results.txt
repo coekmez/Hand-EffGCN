@@ -1,0 +1,1 @@
+For config 9999, the mean accuracy is 1.0 with a std deviation of 0.0

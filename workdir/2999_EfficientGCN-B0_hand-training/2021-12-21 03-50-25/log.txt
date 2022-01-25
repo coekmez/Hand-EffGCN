@@ -1,0 +1,5 @@
+[ 2021-12-21 03:50:25,972 ] Saving folder path: ./workdir/2999_EfficientGCN-B0_hand-training/2021-12-21 03-50-25
+[ 2021-12-21 03:50:25,972 ] 
+[ 2021-12-21 03:50:25,972 ] Starting preparing ...
+[ 2021-12-21 03:50:25,983 ] Saving model name: 2999_EfficientGCN-B0_hand-training
+[ 2021-12-21 03:50:26,023 ] GPU-0 used: 581.5234375MB

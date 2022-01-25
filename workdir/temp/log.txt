@@ -1,0 +1,10 @@
+[ 2022-01-25 14:20:53,868 ] 
+[ 2022-01-25 14:20:53,880 ] Starting generating ...
+[ 2022-01-25 14:20:53,880 ] Dataset: hand-ltraining
+[ 2022-01-25 14:20:53,880 ] Phase: train
+[ 2022-01-25 14:20:55,102 ] Pad the null frames with the previous frames
+[ 2022-01-25 14:20:55,399 ] Sub the center joint #1 (spine joint in ntu and neck joint in kinetics)
+[ 2022-01-25 14:20:56,102 ] Phase: eval
+[ 2022-01-25 14:20:56,462 ] Pad the null frames with the previous frames
+[ 2022-01-25 14:20:56,555 ] Sub the center joint #1 (spine joint in ntu and neck joint in kinetics)
+[ 2022-01-25 14:20:56,746 ] Finish generating!

@@ -1,0 +1,5 @@
+[ 2021-12-21 04:39:15,600 ] Saving folder path: ./workdir/2001_EfficientGCN-B0_ntu-xsub/2021-12-21 04-39-15
+[ 2021-12-21 04:39:15,600 ] 
+[ 2021-12-21 04:39:15,600 ] Starting preparing ...
+[ 2021-12-21 04:39:15,614 ] Saving model name: 2001_EfficientGCN-B0_ntu-xsub
+[ 2021-12-21 04:39:15,671 ] GPU-0 used: 692.48046875MB

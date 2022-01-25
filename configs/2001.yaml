@@ -1,5 +1,5 @@
 # Setting
-gpus: [0,1]
+gpus: [0]
 seed: 1
 debug: False
 pretrained_path: ./pretrained_models
@@ -13,17 +13,17 @@ visualization_frames: []
 
 # Data Loader
 # ntu-xsub, ntu-xview, ntu-xsub120, ntu-xset120
-dataset: ntu-xsub
+dataset: hand-lrtraining
 dataset_args:
-  ntu:
-    train_batch_size: 32
-    eval_batch_size: 32
+  hand:
+    train_batch_size: 8
+    eval_batch_size: 8
     num_frame: 288
     inputs: JVB
-    transform: False
+    transform: True
     root_folder: ./numpy_save
-    ntu60_path: ./ntu60
-    ntu120_path: ./ntu120
+    ntu60_path: ./data
+    ntu120_path: 
 
 # Model
 model_type: EfficientGCN-B0

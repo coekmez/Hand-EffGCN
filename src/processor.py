@@ -81,7 +81,7 @@ class Processor(Initializer):
                 num_sample += x.size(0)
                 reco_top1 = out.max(1)[1]
                 num_top1 += reco_top1.eq(y).sum().item()
-                reco_top5 = torch.topk(out,5)[1]
+                reco_top5 = torch.topk(out,2)[1] #MODDED K=5
                 num_top5 += sum([y[n] in reco_top5[n,:] for n in range(x.size(0))])
 
                 # Calculating Confusion Matrix
@@ -178,6 +178,8 @@ class Processor(Initializer):
                 logging.info('')
             logging.info('Finish training!')
             logging.info('')
+
+            return best_state
 
     def extract(self):
         logging.info('Starting extracting ...')

@@ -1,0 +1,3 @@
+StopwatchTS: 0
+SysTime: 1/1/0001 12:00:00 AM
+Status: False

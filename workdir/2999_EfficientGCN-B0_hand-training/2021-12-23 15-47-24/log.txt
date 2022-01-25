@@ -1,0 +1,5 @@
+[ 2021-12-23 15:47:24,435 ] Saving folder path: ./workdir/2999_EfficientGCN-B0_hand-training/2021-12-23 15-47-24
+[ 2021-12-23 15:47:24,435 ] 
+[ 2021-12-23 15:47:24,435 ] Starting preparing ...
+[ 2021-12-23 15:47:24,435 ] Saving model name: 2999_EfficientGCN-B0_hand-training
+[ 2021-12-23 15:47:24,435 ] Using CPU!

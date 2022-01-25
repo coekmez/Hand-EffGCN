@@ -9,6 +9,8 @@ __data_args = {
     'ntu-xview': {'class': 60, 'shape': [3, 6, 300, 25, 2], 'feeder': NTU_Feeder},
     'ntu-xsub120': {'class': 120, 'shape': [3, 6, 300, 25, 2], 'feeder': NTU_Feeder},
     'ntu-xset120': {'class': 120, 'shape': [3, 6, 300, 25, 2], 'feeder': NTU_Feeder},
+    'hand-ltraining': {'class': 3, 'shape': [3, 6, 10000, 26, 2], 'feeder': NTU_Feeder},
+    'hand-lrtraining': {'class': 3, 'shape': [3, 6, 10000, 26, 2], 'feeder': NTU_Feeder},
 }
 
 def create(dataset, root_folder, transform, num_frame, inputs, **kwargs):
@@ -19,7 +21,7 @@ def create(dataset, root_folder, transform, num_frame, inputs, **kwargs):
         data_args['shape'][2] = num_frame
     except:
         logging.info('')
-        logging.error('Error: Do NOT exist this dataset: {}!'.foramt(dataset))
+        logging.error('Error: Do NOT exist this dataset: {}!'.format(dataset))
         raise ValueError()
     if transform:
         dataset_path = '{}/transformed/{}'.format(root_folder, dataset)
@@ -35,6 +37,8 @@ def create(dataset, root_folder, transform, num_frame, inputs, **kwargs):
         'train': data_args['feeder']('train', **kwargs),
         'eval' : data_args['feeder']('eval', **kwargs),
     }
-    if 'ntu' in dataset:
+    if 'hand' in dataset:
+        feeders.update({'location': NTU_Location_Feeder(data_args['shape'])})
+    elif 'ntu' in dataset:
         feeders.update({'location': NTU_Location_Feeder(data_args['shape'])})
     return feeders, data_args['shape'], data_args['class'], graph.A, graph.parts

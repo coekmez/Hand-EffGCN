@@ -18,7 +18,24 @@ class Graph():
         return self.A
 
     def _get_edge(self):
-        if self.dataset == 'kinetics':
+        if self.dataset == 'hand':
+            num_node = 26
+            neighbor_1base = [(6, 5), (5, 4), (4, 3), (3, 1), 
+                             (11, 10), (10, 9), (9, 8), (8, 7), (7, 1), 
+                             (16, 15), (15, 14), (14, 13), (13, 12), (12, 1),
+                             (21, 20), (20, 19), (19, 18), (18, 17), (17, 1),
+                             (26, 25), (25, 24), (24, 23), (23, 22), (22, 1)]
+            neighbor_link = [(i - 1, j - 1) for (i, j) in neighbor_1base]
+            connect_joint = np.array([5,4,3,1,10,9,8,7,1,15,14,13,12,1,20,19,18,17,1,25,24,23,22,1]) - 1
+            parts = [
+                np.array([6, 5, 4]) - 1,           #thumb   
+                np.array([11, 10, 9, 8]) - 1,      #index        
+                np.array([16, 15, 14, 13]) - 1,    #middle       
+                np.array([21, 20, 19, 18]) - 1,    #ring         
+                np.array([26, 25, 24, 23]) - 1,    #pinky
+                np.array([1,2,3,7,12,17,22]) - 1   #palm
+            ]
+        elif self.dataset == 'kinetics':
             num_node = 18
             neighbor_link = [(4, 3), (3, 2), (7, 6), (6, 5), (13, 12), (12, 11),
                              (10, 9), (9, 8), (11, 5), (8, 2), (5, 1), (2, 1),
