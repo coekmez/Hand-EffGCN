@@ -1,7 +1,9 @@
-# Efficient Graph Convolutional Network (EfficientGCN) (ResGCNv2.0)
+# Skeleton Based Activity Recognition using Graph Convolutional Networks
 
 ## 1 Paper Details
-Project based on the paper below:
+Semester Project completed as a part of Augmented Reality Lab of Product Development Group - ETH Zurich under supervision of Sophokles Ktistakis. 
+
+Based on the paper below:
 
 Yi-Fan Song, Zhang Zhang, Caifeng Shan and Liang Wang. **EfficientGCN: Constructing Stronger and Faster Baselines for Skeleton-based Action Recognition**. Submitted to IEEE T-PAMI, 2021. [[Arxiv Preprint]](https://arxiv.org/pdf/2106.15125.pdf)
 
