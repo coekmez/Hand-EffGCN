@@ -28,7 +28,7 @@ class NTU_Reader():
         training_samples = dict()
         #find a better pattern for that
         training_samples['hand-ltraining'] = [1,2,3]
-        training_samples['hand-lrtraining'] = [1,2,4]
+        training_samples['hand-lrtraining'] = [1,4]
         training_samples['ntu-xsub'] = [
             1, 2, 4, 5, 8, 9, 13, 14, 15, 16, 17, 18, 19, 25, 27, 28, 31, 34, 35, 38
         ]

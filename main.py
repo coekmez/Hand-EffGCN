@@ -40,8 +40,9 @@ def main():
             best_state = p.start()
             top1_accuracies[i] = best_state['acc_top1']
             top5_accuracies[i] = best_state['acc_top5']
-        with open('results.txt', 'w') as f:
-            f.write('For config {}, the mean accuracy is {} with a std deviation of {}'.format(args.config,np.mean(top1_accuracies),np.std(top1_accuracies)))
+        print('I am in iteration {}!'.format(i))
+        with open('results.txt', 'a') as f:
+            f.write('For config {}, the mean accuracy is {} with a std deviation of {} \n'.format(args.config,np.mean(top1_accuracies),np.std(top1_accuracies)))
 
 
 def init_parser():

@@ -32,7 +32,7 @@ class Visualizer():
             'basketball 5', 'washwindow 6', 'jumping 7', 'basketball_signal 8'
         ]
         self.action_names['hand'] = [
-            'bg 1', 'grab 2'
+            'pierce 1', 'poke 2', 'screw 3', 'cut 4'
         ]
 
         self.font_sizes = {

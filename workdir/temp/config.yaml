@@ -1,14 +1,14 @@
-config: '2999'
-dataset: hand-training
+config: '2001'
+dataset: hand-lrtraining
 dataset_args:
   hand:
-    eval_batch_size: 8
+    eval_batch_size: 4
     inputs: JVB
     ntu120_path: null
     ntu60_path: ./data
-    num_frame: 288
+    num_frame: 500
     root_folder: ./numpy_save
-    train_batch_size: 8
+    train_batch_size: 4
     transform: true
 debug: false
 delay_hours: 0
@@ -17,6 +17,7 @@ extract: true
 generate_data: false
 gpus:
 - 0
+iterations: 1
 lr_scheduler: cosine
 model_args:
   act_type: swish

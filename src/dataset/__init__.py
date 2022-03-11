@@ -9,8 +9,8 @@ __data_args = {
     'ntu-xview': {'class': 60, 'shape': [3, 6, 300, 25, 2], 'feeder': NTU_Feeder},
     'ntu-xsub120': {'class': 120, 'shape': [3, 6, 300, 25, 2], 'feeder': NTU_Feeder},
     'ntu-xset120': {'class': 120, 'shape': [3, 6, 300, 25, 2], 'feeder': NTU_Feeder},
-    'hand-ltraining': {'class': 3, 'shape': [3, 6, 10000, 26, 2], 'feeder': NTU_Feeder},
-    'hand-lrtraining': {'class': 3, 'shape': [3, 6, 10000, 26, 2], 'feeder': NTU_Feeder},
+    'hand-ltraining': {'class': 4, 'shape': [3, 6, 10000, 26, 2], 'feeder': NTU_Feeder},
+    'hand-lrtraining': {'class': 4, 'shape': [3, 6, 10000, 26, 2], 'feeder': NTU_Feeder},
 }
 
 def create(dataset, root_folder, transform, num_frame, inputs, **kwargs):

@@ -3,7 +3,7 @@ import logging
 
 n_setups = 4
 
-actions = ["Pierce", "Poke", "Screw"]
+actions = ["Pierce", "Poke", "Screw", "Cut"]
 
 for setup_id in range(n_setups):
     for label_id, label_name in enumerate(actions):
@@ -30,7 +30,7 @@ for setup_id in range(n_setups):
             stop_time = activity['Stop']
             if (activity['Label'] == 'bg' or activity['Label'] == ' bg'):
                 continue
-            elif (activity['Label'] == ' grab'):
+            elif (activity['Label'] == 'grab' or activity['Label'] == ' grab'):
             
                 duration = stop_time - start_time
 

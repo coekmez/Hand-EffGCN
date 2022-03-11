@@ -16,9 +16,9 @@ visualization_frames: []
 dataset: hand-ltraining
 dataset_args:
   hand:
-    train_batch_size: 8
-    eval_batch_size: 8
-    num_frame: 288
+    train_batch_size: 4
+    eval_batch_size: 4
+    num_frame: 500
     inputs: JVB
     transform: False
     root_folder: ./numpy_save
