@@ -5,6 +5,8 @@ from src.generator import Generator
 from src.processor import Processor
 from src.visualizer import Visualizer
 
+import numpy as np
+
 
 def main():
     # Loading parameters
@@ -30,7 +32,17 @@ def main():
 
     else:
         p = Processor(args)
-        p.start()
+        iter = args.iterations
+        top1_accuracies = np.zeros(iter)
+        top5_accuracies = np.zeros(iter)
+    
+        for i in range(iter):
+            best_state = p.start()
+            top1_accuracies[i] = best_state['acc_top1']
+            top5_accuracies[i] = best_state['acc_top5']
+        print('I am in iteration {}!'.format(i))
+        with open('results.txt', 'a') as f:
+            f.write('For config {}, the mean accuracy is {} with a std deviation of {} \n'.format(args.config,np.mean(top1_accuracies),np.std(top1_accuracies)))
 
 
 def init_parser():
@@ -73,6 +85,9 @@ def init_parser():
     # LR_Scheduler
     parser.add_argument('--lr_scheduler', '-ls', type=str, default='', help='Initial learning rate scheduler')
     parser.add_argument('--scheduler_args', default=dict(), help='Args for scheduler')
+
+    # Benchmarking
+    parser.add_argument('--iterations', '-it', type=int, default=1, help='Number of iterations for benchmarking purposes')
 
     return parser
 

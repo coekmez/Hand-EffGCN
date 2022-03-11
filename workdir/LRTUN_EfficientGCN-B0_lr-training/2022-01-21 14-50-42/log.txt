@@ -1,0 +1,5 @@
+[ 2022-01-21 14:50:42,662 ] Saving folder path: ./workdir/LRTUN_EfficientGCN-B0_lr-training/2022-01-21 14-50-42
+[ 2022-01-21 14:50:42,662 ] 
+[ 2022-01-21 14:50:42,662 ] Starting preparing ...
+[ 2022-01-21 14:50:42,677 ] Saving model name: LRTUN_EfficientGCN-B0_lr-training
+[ 2022-01-21 14:50:42,725 ] GPU-0 used: 316.9375MB

@@ -55,50 +55,51 @@ def pre_normalization(data, progress_bar=True, zaxis=[0, 1], xaxis=[8, 4]):
     for i_s, skeleton in enumerate(items):
         if skeleton.sum() == 0:
             continue
-        main_body_center = skeleton[0][:, 1:2, :].copy()
+        #center is the wrist
+        main_body_center = skeleton[0][:, 0:1, :].copy()
         for i_p, person in enumerate(skeleton):
             if person.sum() == 0:
                 continue
             mask = (person.sum(-1) != 0).reshape(T, V, 1)
             s[i_s, i_p] = (s[i_s, i_p] - main_body_center) * mask
 
-    logging.info('Parallel the bone between hip(jpt 0) and spine(jpt 1) of the first person to the z axis')
-    items = tqdm(s, dynamic_ncols=True) if progress_bar else s
-    for i_s, skeleton in enumerate(items):
-        if skeleton.sum() == 0:
-            continue
-        joint_bottom = skeleton[0, 0, zaxis[0]]
-        joint_top = skeleton[0, 0, zaxis[1]]
-        axis = np.cross(joint_top - joint_bottom, [0, 0, 1])
-        angle = angle_between(joint_top - joint_bottom, [0, 0, 1])
-        matrix_z = rotation_matrix(axis, angle)
-        for i_p, person in enumerate(skeleton):
-            if person.sum() == 0:
-                continue
-            for i_f, frame in enumerate(person):
-                if frame.sum() == 0:
-                    continue
-                for i_j, joint in enumerate(frame):
-                    s[i_s, i_p, i_f, i_j] = np.dot(matrix_z, joint)
+    # logging.info('Parallel the bone between hip(jpt 0) and spine(jpt 1) of the first person to the z axis')
+    # items = tqdm(s, dynamic_ncols=True) if progress_bar else s
+    # for i_s, skeleton in enumerate(items):
+    #     if skeleton.sum() == 0:
+    #         continue
+    #     joint_bottom = skeleton[0, 0, zaxis[0]]
+    #     joint_top = skeleton[0, 0, zaxis[1]]
+    #     axis = np.cross(joint_top - joint_bottom, [0, 0, 1])
+    #     angle = angle_between(joint_top - joint_bottom, [0, 0, 1])
+    #     matrix_z = rotation_matrix(axis, angle)
+    #     for i_p, person in enumerate(skeleton):
+    #         if person.sum() == 0:
+    #             continue
+    #         for i_f, frame in enumerate(person):
+    #             if frame.sum() == 0:
+    #                 continue
+    #             for i_j, joint in enumerate(frame):
+    #                 s[i_s, i_p, i_f, i_j] = np.dot(matrix_z, joint)
 
-    logging.info('Parallel the bone between right shoulder(jpt 8) and left shoulder(jpt 4) of the first person to the x axis')
-    items = tqdm(s, dynamic_ncols=True) if progress_bar else s
-    for i_s, skeleton in enumerate(items):
-        if skeleton.sum() == 0:
-            continue
-        joint_rshoulder = skeleton[0, 0, xaxis[0]]
-        joint_lshoulder = skeleton[0, 0, xaxis[1]]
-        axis = np.cross(joint_rshoulder - joint_lshoulder, [1, 0, 0])
-        angle = angle_between(joint_rshoulder - joint_lshoulder, [1, 0, 0])
-        matrix_x = rotation_matrix(axis, angle)
-        for i_p, person in enumerate(skeleton):
-            if person.sum() == 0:
-                continue
-            for i_f, frame in enumerate(person):
-                if frame.sum() == 0:
-                    continue
-                for i_j, joint in enumerate(frame):
-                    s[i_s, i_p, i_f, i_j] = np.dot(matrix_x, joint)
+    # logging.info('Parallel the bone between right shoulder(jpt 8) and left shoulder(jpt 4) of the first person to the x axis')
+    # items = tqdm(s, dynamic_ncols=True) if progress_bar else s
+    # for i_s, skeleton in enumerate(items):
+    #     if skeleton.sum() == 0:
+    #         continue
+    #     joint_rshoulder = skeleton[0, 0, xaxis[0]]
+    #     joint_lshoulder = skeleton[0, 0, xaxis[1]]
+    #     axis = np.cross(joint_rshoulder - joint_lshoulder, [1, 0, 0])
+    #     angle = angle_between(joint_rshoulder - joint_lshoulder, [1, 0, 0])
+    #     matrix_x = rotation_matrix(axis, angle)
+    #     for i_p, person in enumerate(skeleton):
+    #         if person.sum() == 0:
+    #             continue
+    #         for i_f, frame in enumerate(person):
+    #             if frame.sum() == 0:
+    #                 continue
+    #             for i_j, joint in enumerate(frame):
+    #                 s[i_s, i_p, i_f, i_j] = np.dot(matrix_x, joint)
 
     data = np.transpose(s, [0, 4, 2, 3, 1])
     return data

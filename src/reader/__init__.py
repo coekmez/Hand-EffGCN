@@ -4,7 +4,8 @@ from .ntu_reader import NTU_Reader
 
 
 __generator = {
-    'ntu': NTU_Reader,
+    'ntu' : NTU_Reader,
+    'hand': NTU_Reader,
 }
 
 def create(args):

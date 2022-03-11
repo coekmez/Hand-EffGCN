@@ -1,0 +1,8 @@
+[ 2021-12-23 15:47:48,161 ] Saving folder path: ./workdir/2999_EfficientGCN-B0_hand-training/2021-12-23 15-47-48
+[ 2021-12-23 15:47:48,161 ] 
+[ 2021-12-23 15:47:48,161 ] Starting preparing ...
+[ 2021-12-23 15:47:48,161 ] Saving model name: 2999_EfficientGCN-B0_hand-training
+[ 2021-12-23 15:47:48,239 ] GPU-0 used: 313.66796875MB
+[ 2021-12-23 15:47:48,251 ] 
+[ 2021-12-23 15:47:48,251 ] Error: Wrong in loading data files: ./numpy_save/original/hand-training/eval_data.npy or ./numpy_save/original/hand-training/eval_label.pkl!
+[ 2021-12-23 15:47:48,251 ] Please generate data first!

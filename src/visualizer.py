@@ -31,10 +31,14 @@ class Visualizer():
             'walking 1', 'running 2', 'directing_traffic 3', 'soccer 4',
             'basketball 5', 'washwindow 6', 'jumping 7', 'basketball_signal 8'
         ]
+        self.action_names['hand'] = [
+            'pierce 1', 'poke 2', 'screw 3', 'cut 4'
+        ]
 
         self.font_sizes = {
             'ntu': 6,
             'cmu': 14,
+            'hand' : 6
         }
 
 

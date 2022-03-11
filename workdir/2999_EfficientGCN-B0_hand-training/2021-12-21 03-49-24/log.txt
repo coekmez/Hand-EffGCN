@@ -1,0 +1,14 @@
+[ 2021-12-21 03:49:24,258 ] Saving folder path: ./workdir/2999_EfficientGCN-B0_hand-training/2021-12-21 03-49-24
+[ 2021-12-21 03:49:24,260 ] 
+[ 2021-12-21 03:49:24,260 ] Starting preparing ...
+[ 2021-12-21 03:49:24,267 ] Saving model name: 2999_EfficientGCN-B0_hand-training
+[ 2021-12-21 03:49:24,308 ] GPU-0 used: 574.0234375MB
+[ 2021-12-21 03:49:24,314 ] Dataset: hand-training
+[ 2021-12-21 03:49:24,315 ] Batch size: train-8, eval-8
+[ 2021-12-21 03:49:24,315 ] Data shape (branch, channel, frame, joint, person): [3, 6, 288, 26, 2]
+[ 2021-12-21 03:49:24,315 ] Number of action classes: 2
+[ 2021-12-21 03:49:24,333 ] Model: EfficientGCN-B0 {'stem_channel': 64, 'block_args': [[48, 1, 0.5], [24, 1, 0.5], [64, 2, 1], [128, 2, 1]], 'fusion_stage': 2, 'act_type': 'swish', 'att_type': 'stja', 'layer_type': 'Sep', 'drop_prob': 0.25, 'kernel_size': [5, 2], 'scale_args': [1.2, 1.35], 'expand_ratio': 2, 'reduct_ratio': 4, 'bias': True, 'edge': True}
+[ 2021-12-21 03:49:24,583 ] Model profile: 3.20G FLOPs and 0.32M Parameters
+[ 2021-12-21 03:49:24,704 ] Warning: Do NOT exist this pretrained model: ./pretrained_models/2999_EfficientGCN-B0_hand-training.pth.tar!
+[ 2021-12-21 03:49:24,704 ] Create model randomly.
+[ 2021-12-21 03:49:24,709 ] Optimizer: SGD {'lr': 0.1, 'momentum': 0.9, 'nesterov': True, 'weight_decay': 0.0001}

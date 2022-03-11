@@ -1,0 +1,19 @@
+[ 2022-01-25 14:21:10,524 ] Saving folder path: ./workdir/9999_EfficientGCN-B0_hand-ltraining/2022-01-25 14-21-10
+[ 2022-01-25 14:21:10,524 ] 
+[ 2022-01-25 14:21:10,535 ] Starting preparing ...
+[ 2022-01-25 14:21:10,540 ] Saving model name: 9999_EfficientGCN-B0_hand-ltraining
+[ 2022-01-25 14:21:10,587 ] GPU-0 used: 332.5MB
+[ 2022-01-25 14:21:10,587 ] Dataset: hand-ltraining
+[ 2022-01-25 14:21:10,587 ] Batch size: train-8, eval-8
+[ 2022-01-25 14:21:10,587 ] Data shape (branch, channel, frame, joint, person): [3, 6, 288, 26, 2]
+[ 2022-01-25 14:21:10,587 ] Number of action classes: 2
+[ 2022-01-25 14:21:10,603 ] Model: EfficientGCN-B0 {'stem_channel': 64, 'block_args': [[48, 1, 0.5], [24, 1, 0.5], [64, 2, 1], [128, 2, 1]], 'fusion_stage': 2, 'act_type': 'swish', 'att_type': 'stja', 'layer_type': 'Sep', 'drop_prob': 0.25, 'kernel_size': [5, 2], 'scale_args': [1.2, 1.35], 'expand_ratio': 2, 'reduct_ratio': 4, 'bias': True, 'edge': True}
+[ 2022-01-25 14:21:10,821 ] Model profile: 3.20G FLOPs and 0.32M Parameters
+[ 2022-01-25 14:21:10,899 ] Warning: Do NOT exist this pretrained model: ./pretrained_models/9999_EfficientGCN-B0_hand-ltraining.pth.tar!
+[ 2022-01-25 14:21:10,899 ] Create model randomly.
+[ 2022-01-25 14:21:10,899 ] Optimizer: SGD {'lr': 0.1, 'momentum': 0.9, 'nesterov': True, 'weight_decay': 0.0001}
+[ 2022-01-25 14:21:10,899 ] LR_Scheduler: cosine {'max_epoch': 15, 'warm_up': 10}
+[ 2022-01-25 14:21:10,899 ] Loss function: CrossEntropyLoss
+[ 2022-01-25 14:21:10,899 ] Successful!
+[ 2022-01-25 14:21:10,899 ] 
+[ 2022-01-25 14:21:10,899 ] Starting training ...

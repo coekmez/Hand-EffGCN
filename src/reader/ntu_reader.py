@@ -8,9 +8,9 @@ from .transformer import pre_normalization
 class NTU_Reader():
     def __init__(self, args, root_folder, transform, ntu60_path, ntu120_path, **kwargs):
         self.max_channel = 3
-        self.max_frame = 300
-        self.max_joint = 25
-        self.max_person = 4
+        self.max_frame = 10000 #change back to 10000
+        self.max_joint = 26 #change back to 26
+        self.max_person = 2 #change back to 2
         self.select_person_num = 2
         self.dataset = args.dataset
         self.progress_bar = not args.no_progress_bar
@@ -26,6 +26,9 @@ class NTU_Reader():
 
         # Divide train and eval samples
         training_samples = dict()
+        #find a better pattern for that
+        training_samples['hand-ltraining'] = [1,2,3]
+        training_samples['hand-lrtraining'] = [1,4]
         training_samples['ntu-xsub'] = [
             1, 2, 4, 5, 8, 9, 13, 14, 15, 16, 17, 18, 19, 25, 27, 28, 31, 34, 35, 38
         ]
@@ -105,6 +108,10 @@ class NTU_Reader():
             elif self.dataset == 'ntu-xsub' or self.dataset == 'ntu-xsub120':
                 is_training_sample = (subject_id in self.training_sample)
             elif self.dataset == 'ntu-xset120':
+                is_training_sample = (setup_id in self.training_sample)
+            elif self.dataset == 'hand-ltraining':
+                is_training_sample = (setup_id in self.training_sample)
+            elif self.dataset == 'hand-lrtraining':
                 is_training_sample = (setup_id in self.training_sample)
             else:
                 logging.info('')

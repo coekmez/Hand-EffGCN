@@ -1,0 +1,7 @@
+[ 2021-12-21 03:08:08,412 ] Saving folder path: ./workdir/2999_EfficientGCN-B0_hand-training/2021-12-21 03-08-08
+[ 2021-12-21 03:08:08,412 ] 
+[ 2021-12-21 03:08:08,412 ] Starting preparing ...
+[ 2021-12-21 03:08:08,412 ] Saving model name: 2999_EfficientGCN-B0_hand-training
+[ 2021-12-21 03:08:08,459 ] GPU-0 used: 672.76171875MB
+[ 2021-12-21 03:08:08,459 ] 
+[ 2021-12-21 03:08:08,459 ] Error: Do NOT exist this dataset: hand-training!
