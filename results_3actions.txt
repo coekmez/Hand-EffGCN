@@ -1,4 +1,0 @@
-For config 2000, the mean accuracy is 0.8375 with a std deviation of 0.049999999999999996 
-For config 2001, the mean accuracy is 0.9314285714285715 with a std deviation of 0.013997084244475308 
-For config 3000, the mean accuracy is 0.96875 with a std deviation of 0.02795084971874737 
-For config 3001, the mean accuracy is 0.8799999999999999 with a std deviation of 0.027994168488950616 
