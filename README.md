@@ -43,20 +43,17 @@ Before training and evaluating, there are some parameters should be noticed.
 
 * (2) **'--work_dir'** or **'-w'**: The path to workdir, for saving checkpoints and other running files. Default is **'./workdir'**.
 
-* (3) **'--pretrained_path'** or **'-pp'**: The path to the pretrained models. **pretrained_path = None** means using randomly initial model. Default is **None**. 
+* (3) **'--resume'** or **'-r'**: Resume from the recent checkpoint (**'<--work_dir>/checkpoint.pth.tar'**).
 
-* (4) **'--resume'** or **'-r'**: Resume from the recent checkpoint (**'<--work_dir>/checkpoint.pth.tar'**).
+* (4) **'--evaluate'** or **'-e'**: Only evaluate models. You can choose the evaluating model according to the instructions.
 
-* (5) **'--evaluate'** or **'-e'**: Only evaluate models. You can choose the evaluating model according to the instructions.
+* (5) **'--extract'** or **'-ex'**: Extract features from a trained model for visualization. Using this parameter will make a data file named **'extraction_<--config>.npz'** at the **'./visualization'** folder.
 
-* (6) **'--extract'** or **'-ex'**: Extract features from a trained model for visualization. Using this parameter will make a data file named **'extraction_<--config>.npz'** at the **'./visualization'** folder.
+* (6) **'--visualization'** or **'-v'**: Show the information and details of a trained model. You should extract features by using **<--extract>** parameter before visualizing.
 
-* (7) **'--visualization'** or **'-v'**: Show the information and details of a trained model. You should extract features by using **<--extract>** parameter before visualizing.
+* (7) **'--iterations'** or **'-it'**: Determine for how many iterations the whole training session will run. Used only in **benchmarking.sh** in order to measure the mean accuracy of a given configuration and its standard deviation.
 
-* (8) **'--dataset'** or **'-d'**: Choose the dataset. (Choice: **[ntu-xsub, ntu-xview, ntu-xsub120, ntu-xset120]**)
-
-* (9) **'--model_type'** or **'-mt'**: Choose the model. (Format: **EfficientGCN-B{coefficient}**, e.g., EfficientGCN-B0, EfficientGCN-B2, EfficientGCN-B4).
-Other parameters can be updated by modifying the corresponding config file in the **'configs'** folder or using command line to send parameters to the model, and the parameter priority is **command line > yaml config > default value**.
+Other parameters can be updated by modifying the corresponding config file in the **'configs'** folder.
 
 
 ## 4 Running
@@ -67,25 +64,19 @@ Firstly, you should modify the **'path'** parameters in all config files of the 
 
 A python file **'scripts/modify_configs.py'** will help you to do this. You need only to change three parameters in this file to your path to NTU datasets.
 ```
-python scripts/modify_configs.py --path <path/to/save/numpy/data> --ntu60_path <path/to/ntu60/dataset> --ntu120_path <path/to/ntu120/dataset> --pretrained_path <path/to/save/pretraiined/model> --work_dir <path/to/work/dir>
+python scripts/modify_configs.py --path <path/to/save/numpy/data> --ntu60_path <path/to/processed/dataset> --work_dir <path/to/work/dir>
 ```
-All the commands above are optional.
+All the commands above are optional. The code should work as it is right after cloning. 
 
 ### 4.2 Generate Datasets
 
-After modifing the path to datasets, please generate numpy datasets by using **'scripts/auto_gen_data.sh'**.
-```
-bash scripts/auto_gen_data.sh
-```
-It may takes you about 2.5 hours, due to the preprocessing module for X-view benchmark (same as [2s-AGCN](https://github.com/lshiwjx/2s-AGCN)).
+The non-processed HoloLens data is found under **scripts/non-processed data**. In case there are any new additions to the dataset recorded by the HoloLens, name the new recording folder in the format **<Action name>7** or the next available number in **scripts/non-processed data**. Then, run the script **'scripts/convert_data_new.py'**. This will convert HoloLens data to the NTU format in a folder named **data** in the root directory.
 
-To save time, you can only generate numpy data for one benchmark by the following command (only the first time to use this benchmark).
+To generate the numpy dataset after converting them from the HoloLens format, you can generate numpy data for one benchmark by the following command (only the first time to use this benchmark).
 ```
 python main.py -c <config> -gd
 ```
 where `<config>` is the config file name in the **'configs'** folder, e.g., 2001.
-
-**Note:** only training the X-view benchmark requires preprocessing module.
 
 ### 4.3 Train
 
@@ -116,37 +107,26 @@ where **'-ex'** can be removed if the data file **'extraction_`<config>`.npz'** 
 
 ## 5 Results
 
-Top-1 Accuracy for the provided models on **NTU RGB+D 60 & 120** datasets.
+Top-1 Accuracy for the 3 action dataset.
 
-| models          | FLOPs  | parameters | NTU X-sub  | NTU X-view | NTU X-sub120 | NTU X-set120 |
-| :-------------: | :----: | :--------: | :--------: | :--------: | :----------: | :----------: |
-| EfficientGCN-B0 | 3.08G  | 0.32M      | 89.9%      | 94.7%      | 85.9%        | 84.3%        |
-| EfficientGCN-B2 | 6.12G  | 0.79M      | 90.9%      | 95.5%      | 87.9%        | 88.0%        |
-| EfficientGCN-B4 | 15.24G | 2.03M      | **91.7%**  | **95.7%**  | **88.3%**    | **89.1%**    |
+| configs | Mean accuracy  | Standard deviation | 
+| :-----: | :------------: | :----------------: |
+| 2000    | 83%            | 7.14%              |
+| 2001    | 78%            | 9.05%              |  
+| 3000    | 82%            | 11.56%             | 
+| 3001    | 89%            | 2.75%              |
+
+Top-1 Accuracy for the 4 action dataset.
+
+| configs | Mean accuracy  | Standard deviation | 
+| :-----: | :------------: | :----------------: |
+| 2000    | 61%            | 9.17%              |
+| 2001    | 81%            | 2.49%              |  
+| 3000    | 71%            | 10.67%             | 
+| 3001    | 70%            | 2.65%              |
+
+For benchmarking, run **'benchmarking.sh'** which will train and evaluate each model 20 times and save the mean and standard deviation in a file called **results.txt**
 
 ## 6 Citation and Contact
 
-If you have any question, please send e-mail to `yifan.song@cripac.ia.ac.cn`.
-
-Please cite our paper when you use this code in your research.
-```
-@article{song2021efficientgcn,
-  author    = {Song, Yi-Fan and Zhang, Zhang and Shan, Caifeng and Wang, Liang},
-  title     = {EfficientGCN: Constructing Stronger and Faster Baselines for Skeleton-based Action Recognition},
-  journal   = {arXiv:2106.15125},
-  year      = {2021},
-}
-
-@inproceedings{song2020stronger,
-  author    = {Song, Yi-Fan and Zhang, Zhang and Shan, Caifeng and Wang, Liang},
-  title     = {Stronger, Faster and More Explainable: A Graph Convolutional Baseline for Skeleton-Based Action Recognition},
-  booktitle = {Proceedings of the 28th ACM International Conference on Multimedia (ACMMM)},
-  pages     = {1625--1633},
-  year      = {2020},
-  isbn      = {9781450379885},
-  publisher = {Association for Computing Machinery},
-  address   = {New York, NY, USA},
-  url       = {https://doi.org/10.1145/3394171.3413802},
-  doi       = {10.1145/3394171.3413802},
-}
-```
+If you have any questions regarding the setup or the code itself, please send an e-mail to `mcoekmez@student.ethz.ch`.

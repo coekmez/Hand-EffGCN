@@ -1,8 +1,10 @@
 import json, numpy as np
 import logging
 
+#increment this number according to the names of the folders in non-processed data
 n_setups = 4
 
+#in case of a new action, add it here in the dictionary
 actions = ["Pierce", "Poke", "Screw", "Cut"]
 
 for setup_id in range(n_setups):
