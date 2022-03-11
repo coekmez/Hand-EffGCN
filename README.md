@@ -1,20 +1,11 @@
 # Efficient Graph Convolutional Network (EfficientGCN) (ResGCNv2.0)
 
 ## 1 Paper Details
+Project based on the paper below:
 
 Yi-Fan Song, Zhang Zhang, Caifeng Shan and Liang Wang. **EfficientGCN: Constructing Stronger and Faster Baselines for Skeleton-based Action Recognition**. Submitted to IEEE T-PAMI, 2021. [[Arxiv Preprint]](https://arxiv.org/pdf/2106.15125.pdf)
 
-Previous version (ResGCN v1.0): [[Github]](https://github.com/yfsong0709/ResGCNv1) [[ACMMM 2020]](https://dl.acm.org/doi/abs/10.1145/3394171.3413802) [[Arxiv Preprint]](https://arxiv.org/pdf/2010.09978.pdf)
-
-The following pictures are the pipeline of EfficientGCN and the illustration of ST-JointAtt layer, respectively.
-<div align="center">
-    <img src="resources/pipeline.jpg">
-</div>
-
-<div align="center">
-    <img src="resources/st_joint_att.jpg">
-</div>
-
+Source EfficientGCN code (which is sadly no longer hosted on GitHub): [[Gitee]](https://gitee.com/yfsong0709/EfficientGCNv1)
 
 ## 2 Prerequisites
 
@@ -29,42 +20,30 @@ pip install -r scripts/requirements.txt
 
 ### 2.2 Experimental Dataset
 
-Our models are experimented on the **NTU RGB+D 60 & 120** datasets, which can be downloaded from 
-[here](http://rose1.ntu.edu.sg/datasets/actionrecognition.asp).
+Our models are experimented the HoloLens recordings which can be found under **scripts/non-processed data**
 
-There are 302 samples of **NTU RGB+D 60** and 532 samples of **NTU RGB+D 120** need to be ignored, which are shown in the **'src/preprocess/ignore.txt'**.
+It is then converted to the NTU dataset format. For comparison, please refer to: [GitHub](https://github.com/shahroudy/NTURGB-D)
 
 ### 2.3 Pretrained Models
 
-Several pretrained models are provided, which include **EfficientGCN-B0**, **EfficientGCN-B2**, and **EfficientGCN-B4** for the **cross-subject (X-sub)** and **cross-view (X-view)** benchmarks of the **NTU RGB+D 60** dataset and the **cross-subject (X-sub120)** and **cross-setup (X-set120)** benchmarks of the **NTU RGB+D 120** dataset.
-
-These models can be downloaded from [BaiduYun]() (Extraction code: **1c5x**) or [GoogleDrive](https://drive.google.com/drive/folders/1HpvkKyfmmOCzuJXemtDxQCgGGQmWMvj4?usp=sharing).
+Several pretrained models are provided, under the **workdir** folder. However, it is recommended to start a new training from scratch since that folder contains all previous checkpoints as well. A full training session of 70 epochs are expected to take around 15 minutes with the provided dataset.
 
 
 ## 3 Parameters
 
 Before training and evaluating, there are some parameters should be noticed.
 
-* (1) **'--config'** or **'-c'**: The config of EfficientGCN. You must use this parameter in the command line or the program will output an error. There are 12 configs given in the **configs** folder, which can be illustrated in the following tabel.
+* (1) **'--config'** or **'-c'**: The config of EfficientGCN. You must use this parameter in the command line or the program will output an error. There are 4 configs given in the **configs** folder, which can be illustrated in the following tabel.
 
-| config    | 2001   | 2002   | 2003     | 2004     |
-| :-------: | :----: | :----: | :------: | :------: |
-| model     | B0     | B0     | B0       | B0       |
-| benchmark | X-sub  | X-view | X-sub120 | X-set120 |
+| config             | 2000      | 2001           | 3000      | 3001           |
+| :----------------: | :-------: | :------------: | :-------: | :------------: |
+| left or rigth hand | left only | left and right | left only | left and right |
+| normalization      | yes       | yes            | no         | no            |
 
-| config    | 2005   | 2006   | 2007     | 2008     |
-| :-------: | :----: | :----: | :------: | :------: |
-| model     | B2     | B2     | B2       | B2       |
-| benchmark | X-sub  | X-view | X-sub120 | X-set120 |
-
-| config    | 2009   | 2010   | 2011     | 2012     |
-| :-------: | :----: | :----: | :------: | :------: |
-| model     | B4     | B4     | B4       | B4       |
-| benchmark | X-sub  | X-view | X-sub120 | X-set120 |
 
 * (2) **'--work_dir'** or **'-w'**: The path to workdir, for saving checkpoints and other running files. Default is **'./workdir'**.
 
-* (3) **'--pretrained_path'** or **'-pp'**: The path to the pretrained models. **pretrained_path = None** means using randomly initial model. Default is **None**.
+* (3) **'--pretrained_path'** or **'-pp'**: The path to the pretrained models. **pretrained_path = None** means using randomly initial model. Default is **None**. 
 
 * (4) **'--resume'** or **'-r'**: Resume from the recent checkpoint (**'<--work_dir>/checkpoint.pth.tar'**).
 
@@ -76,8 +55,7 @@ Before training and evaluating, there are some parameters should be noticed.
 
 * (8) **'--dataset'** or **'-d'**: Choose the dataset. (Choice: **[ntu-xsub, ntu-xview, ntu-xsub120, ntu-xset120]**)
 
-* (9) **'--model_type'** or **'-mt'**: Choose the model. (Format: **EfficientGCN-B{coefficient}**, e.g., EfficientGCN-B0, EfficientGCN-B2, EfficientGCN-B4)
-
+* (9) **'--model_type'** or **'-mt'**: Choose the model. (Format: **EfficientGCN-B{coefficient}**, e.g., EfficientGCN-B0, EfficientGCN-B2, EfficientGCN-B4).
 Other parameters can be updated by modifying the corresponding config file in the **'configs'** folder or using command line to send parameters to the model, and the parameter priority is **command line > yaml config > default value**.
 
 
