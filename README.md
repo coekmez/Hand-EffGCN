@@ -70,7 +70,7 @@ All the commands above are optional. The code should work as it is right after c
 
 ### 4.2 Generate Datasets
 
-The non-processed HoloLens data is found under **scripts/non-processed data**. In case there are any new additions to the dataset recorded by the HoloLens, name the new recording folder in the format **<Action name>7** or the next available number in **scripts/non-processed data**. Then, run the script **'scripts/convert_data_new.py'**. This will convert HoloLens data to the NTU format in a folder named **data** in the root directory.
+The non-processed HoloLens data is found under **scripts/non-processed data**. In case there are any new additions to the dataset recorded by the HoloLens, name the new recording folder in the format **'<Action name>7'** or the next available number in **scripts/non-processed data**. Then, run the script **'scripts/convert_data_new.py'**. This will convert HoloLens data to the NTU format in a folder named **data** in the root directory.
 
 To generate the numpy dataset after converting them from the HoloLens format, you can generate numpy data for one benchmark by the following command (only the first time to use this benchmark).
 ```
