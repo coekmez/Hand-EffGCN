@@ -11,12 +11,15 @@ Source EfficientGCN code (which is sadly no longer hosted on GitHub): [[Gitee]](
 
 ### 2.1 Libraries
 
-This code is based on [Python3](https://www.anaconda.com/) (anaconda, >=3.5) and [PyTorch](http://pytorch.org/) (>=1.6.0).
+This code is based on [Python3](https://www.anaconda.com/) (anaconda, >=3.5) and [PyTorch](http://pytorch.org/) (>=1.6.0). 
+
+Use of conda environments are strongly recommended due to possible dependency issues caused by CUDA. Make sure to install the necessary CUDA version to make use of your GPU capabilities.
 
 Other Python libraries are presented in the **'scripts/requirements.txt'**, which can be installed by 
 ```
 pip install -r scripts/requirements.txt
 ```
+
 
 ### 2.2 Experimental Dataset
 
